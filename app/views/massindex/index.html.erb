@@ -23,10 +23,27 @@ console.log("This");
     rangeSelector : {
       selected : 1
       },
+    rangeSelector : {
+          buttons : [{
+	  type : 'week',
+	  count : 1,
+	  text : '1W'
+	}, {
+          type : 'month',
+          count : 1,
+          text : '1M'
+        }, {
+       type : 'all',
+         count : 1,
+         text : 'All'
+       }],
+         selected : 1,
+         inputEnabled : false
+       },
     title : {
     text : 'Mass Device Index'},
     series : [{
-    name : 'AAPL',
+    name : 'MI',
       data : data,
         tooltip: {
           valueDecimals: 2
