@@ -15,8 +15,9 @@ $(function() {
 // window.my_function = function(data) { console.log(data); }
 
 console.log("This");
- $.getJSON('http://localhost:8080/services/v1/index/?callback=?', function(data) {
-console.log("YAY");
+ $.getJSON('http://ec2-54-186-168-209.us-west-2.compute.amazonaws.com:8080/services/v1/index/?callback=?', function(data) {
+// $.getJSON('http://localhost:8080/services/v1/index/?callback=?', function(data) {
+// console.log("YAY");
 // Create the chart
   $('#container').highcharts('StockChart', {
     rangeSelector : {
