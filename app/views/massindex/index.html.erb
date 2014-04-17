@@ -15,23 +15,38 @@ $(function() {
 // window.my_function = function(data) { console.log(data); }
 
 console.log("This");
- $.getJSON('http://localhost:8080/services/v1/index/?callback=?', function(data) {
+// $.getJSON('http://localhost:8080/services/v1/index/?callback=?', function(data) {
+ $.getJSON('http://ec2-54-186-168-209.us-west-2.compute.amazonaws.com:8080/services/v1/index/?callback=?', function(data) {
 console.log("YAY");
 // Create the chart
   $('#container').highcharts('StockChart', {
     rangeSelector : {
       selected : 1
-      },
+    },
     rangeSelector : {
-          buttons : [{
-	  type : 'week',
-	  count : 1,
-	  text : '1W'
-	}, {
+      buttons : [
+        { 
+          type: 'day',
+          count: 3,
+          text:'3d'
+        },
+        {
+          type : 'week',
+          count : 1,
+          text : '1W'
+        }, {
           type : 'month',
           count : 1,
           text : '1M'
         }, {
+          type : 'month',
+          count: 3, 
+          text: '3m',
+        }, {
+          type : 'month',
+          count: 6, 
+          text: '6m',
+       }, {
        type : 'all',
          count : 1,
          text : 'All'
@@ -39,6 +54,7 @@ console.log("YAY");
          selected : 1,
          inputEnabled : false
        },
+
     title : {
     text : 'Mass Device Index'},
     series : [{
