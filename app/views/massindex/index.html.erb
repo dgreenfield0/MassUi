@@ -16,7 +16,7 @@ $(function() {
 
 console.log("This");
 // $.getJSON('http://localhost:8080/services/v1/index/?callback=?', function(data) {
- $.getJSON('http://ec2-54-186-168-209.us-west-2.compute.amazonaws.com:8080/services/v1/index/?callback=?', function(data) {
+ $.getJSON('http://ec2-54-186-2-22.us-west-2.compute.amazonaws.com:8080/services/v1/index/?callback=?', function(data) {
 console.log("YAY");
 // Create the chart
   $('#container').highcharts('StockChart', {
@@ -25,7 +25,7 @@ console.log("YAY");
     },
     rangeSelector : {
       buttons : [
-        { 
+        {
           type: 'day',
           count: 3,
           text:'3d'
@@ -40,11 +40,11 @@ console.log("YAY");
           text : '1M'
         }, {
           type : 'month',
-          count: 3, 
+          count: 3,
           text: '3m',
         }, {
           type : 'month',
-          count: 6, 
+          count: 6,
           text: '6m',
        }, {
          type : 'all',
