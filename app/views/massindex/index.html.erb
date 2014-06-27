@@ -5,21 +5,23 @@
 </head>
 
 <h1>Massindex</h1>
-<div id="container" style="width:80%; height:400px;"></div>
+<!--
+  <div id="container-chart-a" style="width:80%; height:400px;"></div>
+-->
+<div id="container-chart-price"></div>
+<div class="spacer"></div>
+<div id="container-chart-percent" class="chart"></div>
 
 
 <script>
 $(function() {
 
-//$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data) {
-// window.my_function = function(data) { console.log(data); }
-
 console.log("This");
 // $.getJSON('http://localhost:8080/services/v1/index/?callback=?', function(data) {
- $.getJSON('http://ec2-54-186-2-22.us-west-2.compute.amazonaws.com:8080/services/v1/index/?callback=?', function(data) {
+ $.getJSON('http://ec2-54-186-2-22.us-west-2.compute.amazonaws.com:8080/services/v1/index/?type=price&callback=?', function(data) {
 console.log("YAY");
 // Create the chart
-  $('#container').highcharts('StockChart', {
+  $('#container-chart-price').highcharts('StockChart', {
     rangeSelector : {
       selected : 1
     },
@@ -67,5 +69,59 @@ console.log("YAY");
       }]
     });
   });
+
+$.getJSON('http://ec2-54-186-2-22.us-west-2.compute.amazonaws.com:8080/services/v1/index/?type=percent&callback=?', function(data) {
+$('#container-chart-percent').highcharts('StockChart', {
+  rangeSelector : {
+    selected : 1
+  },
+  rangeSelector : {
+    buttons : [
+      {
+        type: 'day',
+        count: 3,
+        text:'3d'
+      },
+      {
+        type : 'week',
+        count : 1,
+        text : '1W'
+      }, {
+        type : 'month',
+        count : 1,
+        text : '1M'
+      }, {
+        type : 'month',
+        count: 3,
+        text: '3m',
+      }, {
+        type : 'month',
+        count: 6,
+        text: '6m',
+     }, {
+       type : 'all',
+       count : 1,
+       text : 'All'
+     }],
+       selected : 5,
+       inputEnabled : false
+     },
+
+  title : {
+  text : 'Mass Device Index'},
+  series : [{
+  name : 'MI',
+    data : data,
+    color: '#f15d22',
+      tooltip: {
+        valueDecimals: 2
+      }
+    }]
+  });
+  });
+
 });
+
+
+
 </script>
